@@ -1,0 +1,518 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B601581D18064C6200081A76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B601581C18064C6200081A76 /* Foundation.framework */; };
+		B601582B18064C6200081A76 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B601582A18064C6200081A76 /* XCTest.framework */; };
+		B601582C18064C6200081A76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B601581C18064C6200081A76 /* Foundation.framework */; };
+		B601582E18064C6200081A76 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B601582D18064C6200081A76 /* UIKit.framework */; };
+		B601583118064C6200081A76 /* libiOSMediaModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B601581918064C6200081A76 /* libiOSMediaModule.a */; };
+		B601583718064C6200081A76 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B601583518064C6200081A76 /* InfoPlist.strings */; };
+		B601583918064C6200081A76 /* iOSMediaModuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B601583818064C6200081A76 /* iOSMediaModuleTests.m */; };
+		B601584518064CCD00081A76 /* iOSRDMediaControll.mm in Sources */ = {isa = PBXBuildFile; fileRef = B601584418064CCD00081A76 /* iOSRDMediaControll.mm */; };
+		B601584818064DBF00081A76 /* iOSRDMediaSample.mm in Sources */ = {isa = PBXBuildFile; fileRef = B601584718064DBF00081A76 /* iOSRDMediaSample.mm */; };
+		B601584B18064E4400081A76 /* iOSRDMemAllocator.mm in Sources */ = {isa = PBXBuildFile; fileRef = B601584A18064E4400081A76 /* iOSRDMemAllocator.mm */; };
+		B601584E18064EF100081A76 /* iOSRDReceiverCallBack.mm in Sources */ = {isa = PBXBuildFile; fileRef = B601584D18064EF100081A76 /* iOSRDReceiverCallBack.mm */; };
+		B60158511806777600081A76 /* H264Enc.mm in Sources */ = {isa = PBXBuildFile; fileRef = B60158501806777600081A76 /* H264Enc.mm */; };
+		B601585418067F1000081A76 /* iOSCam.mm in Sources */ = {isa = PBXBuildFile; fileRef = B601585318067F1000081A76 /* iOSCam.mm */; };
+		B601585A18068E0800081A76 /* MediaBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = B601585918068E0800081A76 /* MediaBuffer.mm */; };
+		B605148A18078FDA00B5D31F /* MediaRender.mm in Sources */ = {isa = PBXBuildFile; fileRef = B605148918078FDA00B5D31F /* MediaRender.mm */; };
+		B605148D1807909C00B5D31F /* H264Dec.mm in Sources */ = {isa = PBXBuildFile; fileRef = B605148C1807909C00B5D31F /* H264Dec.mm */; };
+		B60514941807C63300B5D31F /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B60514921807C63300B5D31F /* libavcodec.a */; };
+		B60514951807C63300B5D31F /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B60514931807C63300B5D31F /* libavutil.a */; };
+		B60514971807C63B00B5D31F /* libx264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B60514961807C63B00B5D31F /* libx264.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B601582F18064C6200081A76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B601581118064C6200081A76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B601581818064C6200081A76;
+			remoteInfo = iOSMediaModule;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B601581718064C6200081A76 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B601581918064C6200081A76 /* libiOSMediaModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiOSMediaModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B601581C18064C6200081A76 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B601582018064C6200081A76 /* iOSMediaModule-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOSMediaModule-Prefix.pch"; sourceTree = "<group>"; };
+		B601582918064C6200081A76 /* iOSMediaModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSMediaModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B601582A18064C6200081A76 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B601582D18064C6200081A76 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		B601583418064C6200081A76 /* iOSMediaModuleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOSMediaModuleTests-Info.plist"; sourceTree = "<group>"; };
+		B601583618064C6200081A76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B601583818064C6200081A76 /* iOSMediaModuleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSMediaModuleTests.m; sourceTree = "<group>"; };
+		B601584218064CA000081A76 /* iOSMediaModulePub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSMediaModulePub.h; sourceTree = "<group>"; };
+		B601584318064CCD00081A76 /* iOSRDMediaControll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSRDMediaControll.h; sourceTree = "<group>"; };
+		B601584418064CCD00081A76 /* iOSRDMediaControll.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iOSRDMediaControll.mm; sourceTree = "<group>"; };
+		B601584618064DBF00081A76 /* iOSRDMediaSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSRDMediaSample.h; sourceTree = "<group>"; };
+		B601584718064DBF00081A76 /* iOSRDMediaSample.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iOSRDMediaSample.mm; sourceTree = "<group>"; };
+		B601584918064E4400081A76 /* iOSRDMemAllocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSRDMemAllocator.h; sourceTree = "<group>"; };
+		B601584A18064E4400081A76 /* iOSRDMemAllocator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iOSRDMemAllocator.mm; sourceTree = "<group>"; };
+		B601584C18064EF100081A76 /* iOSRDReceiverCallBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSRDReceiverCallBack.h; sourceTree = "<group>"; };
+		B601584D18064EF100081A76 /* iOSRDReceiverCallBack.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iOSRDReceiverCallBack.mm; sourceTree = "<group>"; };
+		B601584F1806777600081A76 /* H264Enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H264Enc.h; sourceTree = "<group>"; };
+		B60158501806777600081A76 /* H264Enc.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = H264Enc.mm; sourceTree = "<group>"; };
+		B601585218067F1000081A76 /* iOSCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSCam.h; sourceTree = "<group>"; };
+		B601585318067F1000081A76 /* iOSCam.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iOSCam.mm; sourceTree = "<group>"; };
+		B601585818068E0800081A76 /* MediaBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaBuffer.h; sourceTree = "<group>"; };
+		B601585918068E0800081A76 /* MediaBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MediaBuffer.mm; sourceTree = "<group>"; };
+		B605148818078FDA00B5D31F /* MediaRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaRender.h; sourceTree = "<group>"; };
+		B605148918078FDA00B5D31F /* MediaRender.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MediaRender.mm; sourceTree = "<group>"; };
+		B605148B1807909C00B5D31F /* H264Dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H264Dec.h; sourceTree = "<group>"; };
+		B605148C1807909C00B5D31F /* H264Dec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = H264Dec.mm; sourceTree = "<group>"; };
+		B60514901807C62300B5D31F /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		B60514921807C63300B5D31F /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavcodec.a; path = lib/H264Dec/libavcodec.a; sourceTree = "<group>"; };
+		B60514931807C63300B5D31F /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = lib/H264Dec/libavutil.a; sourceTree = "<group>"; };
+		B60514961807C63B00B5D31F /* libx264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libx264.a; path = lib/H264Enc/libx264.a; sourceTree = "<group>"; };
+		B6FBF2F41808DE9300F2F8C4 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		B6FBF2F51808E8E800F2F8C4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B601581618064C6200081A76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B60514971807C63B00B5D31F /* libx264.a in Frameworks */,
+				B60514941807C63300B5D31F /* libavcodec.a in Frameworks */,
+				B60514951807C63300B5D31F /* libavutil.a in Frameworks */,
+				B601581D18064C6200081A76 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B601582618064C6200081A76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B601582B18064C6200081A76 /* XCTest.framework in Frameworks */,
+				B601582E18064C6200081A76 /* UIKit.framework in Frameworks */,
+				B601583118064C6200081A76 /* libiOSMediaModule.a in Frameworks */,
+				B601582C18064C6200081A76 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B601581018064C6200081A76 = {
+			isa = PBXGroup;
+			children = (
+				B601581E18064C6200081A76 /* iOSMediaModule */,
+				B601583218064C6200081A76 /* iOSMediaModuleTests */,
+				B601581B18064C6200081A76 /* Frameworks */,
+				B601581A18064C6200081A76 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B601581A18064C6200081A76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B601581918064C6200081A76 /* libiOSMediaModule.a */,
+				B601582918064C6200081A76 /* iOSMediaModuleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B601581B18064C6200081A76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6FBF2F51808E8E800F2F8C4 /* AudioToolbox.framework */,
+				B60514961807C63B00B5D31F /* libx264.a */,
+				B60514921807C63300B5D31F /* libavcodec.a */,
+				B60514931807C63300B5D31F /* libavutil.a */,
+				B60514901807C62300B5D31F /* GLKit.framework */,
+				B601581C18064C6200081A76 /* Foundation.framework */,
+				B601582A18064C6200081A76 /* XCTest.framework */,
+				B601582D18064C6200081A76 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B601581E18064C6200081A76 /* iOSMediaModule */ = {
+			isa = PBXGroup;
+			children = (
+				B601585818068E0800081A76 /* MediaBuffer.h */,
+				B601585918068E0800081A76 /* MediaBuffer.mm */,
+				B601584218064CA000081A76 /* iOSMediaModulePub.h */,
+				B601581F18064C6200081A76 /* Supporting Files */,
+				B601584318064CCD00081A76 /* iOSRDMediaControll.h */,
+				B601584418064CCD00081A76 /* iOSRDMediaControll.mm */,
+				B601584618064DBF00081A76 /* iOSRDMediaSample.h */,
+				B601584718064DBF00081A76 /* iOSRDMediaSample.mm */,
+				B601584918064E4400081A76 /* iOSRDMemAllocator.h */,
+				B601584A18064E4400081A76 /* iOSRDMemAllocator.mm */,
+				B601584C18064EF100081A76 /* iOSRDReceiverCallBack.h */,
+				B601584D18064EF100081A76 /* iOSRDReceiverCallBack.mm */,
+				B601584F1806777600081A76 /* H264Enc.h */,
+				B60158501806777600081A76 /* H264Enc.mm */,
+				B601585218067F1000081A76 /* iOSCam.h */,
+				B601585318067F1000081A76 /* iOSCam.mm */,
+				B605148818078FDA00B5D31F /* MediaRender.h */,
+				B605148918078FDA00B5D31F /* MediaRender.mm */,
+				B605148B1807909C00B5D31F /* H264Dec.h */,
+				B605148C1807909C00B5D31F /* H264Dec.mm */,
+				B6FBF2F41808DE9300F2F8C4 /* Common.h */,
+			);
+			path = iOSMediaModule;
+			sourceTree = "<group>";
+		};
+		B601581F18064C6200081A76 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B601582018064C6200081A76 /* iOSMediaModule-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B601583218064C6200081A76 /* iOSMediaModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				B601583818064C6200081A76 /* iOSMediaModuleTests.m */,
+				B601583318064C6200081A76 /* Supporting Files */,
+			);
+			path = iOSMediaModuleTests;
+			sourceTree = "<group>";
+		};
+		B601583318064C6200081A76 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B601583418064C6200081A76 /* iOSMediaModuleTests-Info.plist */,
+				B601583518064C6200081A76 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B601581818064C6200081A76 /* iOSMediaModule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B601583C18064C6200081A76 /* Build configuration list for PBXNativeTarget "iOSMediaModule" */;
+			buildPhases = (
+				B601581518064C6200081A76 /* Sources */,
+				B601581618064C6200081A76 /* Frameworks */,
+				B601581718064C6200081A76 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iOSMediaModule;
+			productName = iOSMediaModule;
+			productReference = B601581918064C6200081A76 /* libiOSMediaModule.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B601582818064C6200081A76 /* iOSMediaModuleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B601583F18064C6200081A76 /* Build configuration list for PBXNativeTarget "iOSMediaModuleTests" */;
+			buildPhases = (
+				B601582518064C6200081A76 /* Sources */,
+				B601582618064C6200081A76 /* Frameworks */,
+				B601582718064C6200081A76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B601583018064C6200081A76 /* PBXTargetDependency */,
+			);
+			name = iOSMediaModuleTests;
+			productName = iOSMediaModuleTests;
+			productReference = B601582918064C6200081A76 /* iOSMediaModuleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B601581118064C6200081A76 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = liyang;
+			};
+			buildConfigurationList = B601581418064C6200081A76 /* Build configuration list for PBXProject "iOSMediaModule" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B601581018064C6200081A76;
+			productRefGroup = B601581A18064C6200081A76 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B601581818064C6200081A76 /* iOSMediaModule */,
+				B601582818064C6200081A76 /* iOSMediaModuleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B601582718064C6200081A76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B601583718064C6200081A76 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B601581518064C6200081A76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B605148A18078FDA00B5D31F /* MediaRender.mm in Sources */,
+				B601585A18068E0800081A76 /* MediaBuffer.mm in Sources */,
+				B601584B18064E4400081A76 /* iOSRDMemAllocator.mm in Sources */,
+				B601585418067F1000081A76 /* iOSCam.mm in Sources */,
+				B605148D1807909C00B5D31F /* H264Dec.mm in Sources */,
+				B601584E18064EF100081A76 /* iOSRDReceiverCallBack.mm in Sources */,
+				B601584818064DBF00081A76 /* iOSRDMediaSample.mm in Sources */,
+				B601584518064CCD00081A76 /* iOSRDMediaControll.mm in Sources */,
+				B60158511806777600081A76 /* H264Enc.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B601582518064C6200081A76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B601583918064C6200081A76 /* iOSMediaModuleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B601583018064C6200081A76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B601581818064C6200081A76 /* iOSMediaModule */;
+			targetProxy = B601582F18064C6200081A76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B601583518064C6200081A76 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B601583618064C6200081A76 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B601583A18064C6200081A76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B601583B18064C6200081A76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B601583D18064C6200081A76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/iOSMediaModule.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOSMediaModule/iOSMediaModule-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/iOSMediaModule/iOSMediaModule/include/H264Enc,
+					/iOSMediaModule/iOSMediaModule/include/H264Dec,
+					/iOSMediaModule/iOSMediaModule/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/iOSMediaModule/iOSMediaModule/lib/H264Dec,
+					/iOSMediaModule/iOSMediaModule/lib/H264Enc,
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = armv7;
+			};
+			name = Debug;
+		};
+		B601583E18064C6200081A76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/iOSMediaModule.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOSMediaModule/iOSMediaModule-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/iOSMediaModule/iOSMediaModule/include/H264Enc,
+					/iOSMediaModule/iOSMediaModule/include/H264Dec,
+					/iOSMediaModule/iOSMediaModule/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/iOSMediaModule/iOSMediaModule/lib/H264Dec,
+					/iOSMediaModule/iOSMediaModule/lib/H264Enc,
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = armv7;
+			};
+			name = Release;
+		};
+		B601584018064C6200081A76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOSMediaModule/iOSMediaModule-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "iOSMediaModuleTests/iOSMediaModuleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		B601584118064C6200081A76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOSMediaModule/iOSMediaModule-Prefix.pch";
+				INFOPLIST_FILE = "iOSMediaModuleTests/iOSMediaModuleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B601581418064C6200081A76 /* Build configuration list for PBXProject "iOSMediaModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B601583A18064C6200081A76 /* Debug */,
+				B601583B18064C6200081A76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B601583C18064C6200081A76 /* Build configuration list for PBXNativeTarget "iOSMediaModule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B601583D18064C6200081A76 /* Debug */,
+				B601583E18064C6200081A76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B601583F18064C6200081A76 /* Build configuration list for PBXNativeTarget "iOSMediaModuleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B601584018064C6200081A76 /* Debug */,
+				B601584118064C6200081A76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B601581118064C6200081A76 /* Project object */;
+}

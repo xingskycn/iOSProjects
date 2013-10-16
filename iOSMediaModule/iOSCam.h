@@ -14,9 +14,9 @@ class H264Enc;
 class iOSRDMemAllocator;
 @class MediaBuffer;
 
-/**********************************************************
+/**
  * 媒体数据采集类，完成数据采集加编码
- **********************************************************/
+ */
 @interface iOSCam : NSObject<AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 {
     BOOL b_capture;
@@ -35,7 +35,7 @@ class iOSRDMemAllocator;
     H264Enc *H264Encoder;
     iOSRDMemAllocator *mediaDataMemAlloc;
     MediaBuffer *videoDataBuffer;
-    MediaBuffer *audioDataBuffer;
+    MediaBuffer *audioDataBuffer;    
     
     AVCaptureConnection *videoConnection;
     AVCaptureConnection *audioConnection;

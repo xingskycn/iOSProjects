@@ -12,10 +12,10 @@
 #import "H264Dec.h"
 #import "MediaRender.h"
 
-/******************************************************
+/**
  * 媒体数据发送线程类，主要是为了使用ios的NSThread，因为它不能
  * 直接在C++类中使用
- ******************************************************/
+ */
 @interface iOSSendThread : NSObject
 {
     IRDReceiverCallBack *callBack;
@@ -46,9 +46,9 @@
 
 @end
 
-/******************************************************
+/**
  * 媒体控制类，继承了媒体控制接口类IRDMediaControl
- ******************************************************/
+ */
 class iOSRDMediaControll : public IRDMediaControl
 {
 private:

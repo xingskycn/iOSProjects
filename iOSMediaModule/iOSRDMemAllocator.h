@@ -12,9 +12,9 @@
 class iOSRDMediaSample;
 
 
-/**********************************************************
+/**
  * 媒体数据内存分配类，继承媒体数据内存分配接口类IRDMemAllocator
- **********************************************************/
+ */
 class iOSRDMemAllocator : public IRDMemAllocator
 {
 private:

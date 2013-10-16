@@ -58,8 +58,6 @@ enum iOS_PIXEL_FORMAT
 
 typedef struct codecParam
 {
-    bool b_enc;
-    
     //video codec param
     int width;
     int height;

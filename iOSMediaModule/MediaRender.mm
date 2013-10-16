@@ -8,6 +8,7 @@
 
 #import "MediaRender.h"
 #import "Common.h"
+#import <sys/time.h>
 
 #define ATTRIB_VERTEX 3
 #define ATTRIB_TEXTURE 4
@@ -37,6 +38,7 @@ static void bufferCallBack(void *inUserData, AudioQueueRef inAQ, AudioQueueBuffe
     }
     else
     {
+        //NSLog(@"No data");
         audioQueueBuffer->mAudioDataByteSize = 1;
         memset(audioQueueBuffer->mAudioData, 0, 1);
         AudioQueueEnqueueBuffer(audioQueue, audioQueueBuffer, 0, nil);
@@ -127,7 +129,7 @@ const GLbyte fShaderStr[] =
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
     if(b_active == YES)
-    {
+    {        
         IRDMediaSample *mediaSample;
         if([videoDataBuffer getMediaSample:&mediaSample] == RC_OK)
         {
@@ -263,21 +265,17 @@ const GLbyte fShaderStr[] =
     return RC_OK;
 }
 
-- (int)start
+- (void)audioThreadProc
 {
-    buffers[0]->mAudioDataByteSize = 1;
-    //memset(buffers[0]->mAudioData, 0, 1);
-    AudioQueueEnqueueBuffer(queue, buffers[0], 0, nil);
-    
-    buffers[1]->mAudioDataByteSize = 1;
-    //memset(buffers[1]->mAudioData, 0, 1);
-    AudioQueueEnqueueBuffer(queue, buffers[1], 0, nil);
-    
-    buffers[2]->mAudioDataByteSize = 12;
-    //memset(buffers[2]->mAudioData, 0, 1);
-    AudioQueueEnqueueBuffer(queue, buffers[2], 0, nil);
-    
+    while([audioDataBuffer getCurrentCount] < 3)
+    {
+        //NSLog(@"No enough data");
+    }
+    [self fillAudioQueueBuffer:buffers[0]];
+    [self fillAudioQueueBuffer:buffers[1]];
+    [self fillAudioQueueBuffer:buffers[2]];
     AudioQueueStart(queue, NULL);
+    
     b_active = YES;
     [EAGLContext setCurrentContext:context];
     glGenTextures(1, &textureY);
@@ -285,6 +283,29 @@ const GLbyte fShaderStr[] =
     glGenTextures(1, &textureV);
     [self setShaders];
     displayView.delegate = self;
+}
+
+- (int)start
+{
+//    buffers[0]->mAudioDataByteSize = 1;
+//    AudioQueueEnqueueBuffer(queue, buffers[0], 0, nil);
+//    
+//    buffers[1]->mAudioDataByteSize = 1;
+//    AudioQueueEnqueueBuffer(queue, buffers[1], 0, nil);
+//    
+//    buffers[2]->mAudioDataByteSize = 12;
+//    AudioQueueEnqueueBuffer(queue, buffers[2], 0, nil);
+//    
+//    AudioQueueStart(queue, NULL);
+//    b_active = YES;
+//    [EAGLContext setCurrentContext:context];
+//    glGenTextures(1, &textureY);
+//    glGenTextures(1, &textureU);
+//    glGenTextures(1, &textureV);
+//    [self setShaders];
+//    displayView.delegate = self;
+    audioStart = [[NSThread alloc] initWithTarget:self selector:@selector(audioThreadProc) object:nil];
+    [audioStart start];
     
     return RC_OK;
 }

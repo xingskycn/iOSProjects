@@ -12,9 +12,9 @@
 #import "MediaBuffer.h"
 #import "H264Dec.h"
 
-/**********************************************************
+/**
  * 媒体数据回调类，继承媒体数据回调接口类
- **********************************************************/
+ */
 class iOSRDReceiverCallBack : public IRDReceiverCallBack
 {
 private:

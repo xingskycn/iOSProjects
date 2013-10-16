@@ -12,6 +12,7 @@
 #import "MediaBuffer.h"
 #import "iOSRDMediaSample.h"
 #import "g711common.h"
+#import <sys/time.h>
 
 #define TestVideo
 
@@ -49,6 +50,7 @@
                 
                 unsigned char *luma = (unsigned char*)CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 0);
                 unsigned char *chroma = (unsigned char*)CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 1);
+
                 int frame_size;
                 unsigned char *nalData = H264Encoder->x264_encode(&frame_size, luma, chroma);
                 CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
@@ -71,6 +73,11 @@
         }
         else if (connection == audioConnection)
         {
+            //add
+            static double d_index = 0;
+            static int64_t totalSamples = 0;
+            //add
+            
             if(a_frame_cnt == 0)
             {
                 CMTime tmp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
@@ -93,40 +100,164 @@
             {
                 NSLog(@"error");
             }
+
             IRDMediaSample *mediaSample;
             if(mediaDataMemAlloc->GetFreeRDMediaSample(&mediaSample) == RC_OK)
             {
-                int numSamples = totalLength/2;
+                int index;
+                int numSamples = 0;
                 char *buf;
                 mediaSample->GetBuffer(&buf);
                 memcpy(buf, &a_pts, sizeof(int64_t));
-                //memcpy(buf+sizeof(int64_t), &numSamples, sizeof(int));
                 SInt16 *sData = (SInt16*)data;
                 char *compressedData = buf + sizeof(int) + sizeof(int64_t);
-                int sampleCnt = 0;
-                for(double i=0; (int)i<numSamples; i += 44100.0/8000)
+                
+                if(audio_codec_id == AUDIO_CODEC_G711_ALAW)
                 {
-                    if(audio_codec_id == AUDIO_CODEC_G711_ALAW)
+                    while((index = (int)((int64_t)(d_index+0.5) - totalSamples)) < totalLength/2)
                     {
-                        compressedData[sampleCnt++] = s16_to_alaw(sData[(int)i]);
-                    }
-                    else if(audio_codec_id == AUDIO_CODEC_G711_ULAW)
-                    {
-                        compressedData[sampleCnt++] = s16_to_ulaw(sData[(int)i]);
+                        compressedData[numSamples++] = s16_to_alaw(sData[index]);
+                        d_index += 44100.0/8000;
                     }
                 }
-                *((int*)(buf+sizeof(int64_t))) = sampleCnt;
+                else if(audio_codec_id == AUDIO_CODEC_G711_ULAW)
+                {
+                    while((index = (int)((int64_t)(d_index+0.5) - totalSamples)) < totalLength/2)
+                    {
+                        compressedData[numSamples++] = s16_to_ulaw(sData[index]);
+                        d_index += 44100.0/8000;
+                    }
+                }
+                *((int*)(buf+sizeof(int64_t))) = numSamples;
+                totalSamples += totalLength/2;
+                //NSLog(@"numSamples = %d", numSamples);
+                
+//                int numSamples = totalLength/2;
+//                char *buf;
+//                mediaSample->GetBuffer(&buf);
+//                memcpy(buf, &a_pts, sizeof(int64_t));
+//                SInt16 *sData = (SInt16*)data;
+//                char *compressedData = buf + sizeof(int) + sizeof(int64_t);
+//                
+//                for(int i=0; i<numSamples; i++)
+//                {
+//                    if(audio_codec_id == AUDIO_CODEC_G711_ALAW)
+//                    {
+//                        compressedData[i] = s16_to_alaw(sData[i]);
+//                    }
+//                    else if(audio_codec_id == AUDIO_CODEC_G711_ULAW)
+//                    {
+//                        compressedData[i] = s16_to_ulaw(sData[i]);
+//                    }
+//                }
+//                *((int*)(buf+sizeof(int64_t))) = numSamples;
                 [audioDataBuffer putMediaSample:mediaSample];
             }
             else
             {
                 NSLog(@"No free media sample");
             }
-            
             a_frame_cnt++;
         }
     }
 }
+
+//- (void)audioEncodeThreadProc
+//{
+//    char *audioBuf;
+//    while(b_capture)
+//    {
+//        if([captureAudioBuf getCurrentCount] > 0)
+//        {
+//            [captureAudioBuf getBuf:&audioBuf];
+//            int64_t pts = *((int64_t*)audioBuf);
+//            int len = *((int*)(audioBuf+sizeof(int64_t)));
+//            SInt16 *sData = (SInt16*)(audioBuf+sizeof(int64_t)+sizeof(int));
+//            
+//            IRDMediaSample *mediaSample;
+//            if(mediaDataMemAlloc->GetFreeRDMediaSample(&mediaSample) == RC_OK)
+//            {
+//                int numSamples = len/2;
+//                char *buf;
+//                mediaSample->GetBuffer(&buf);
+//                
+//                memcpy(buf, &pts, sizeof(int64_t));
+//                char *compressedData = buf + sizeof(int) + sizeof(int64_t);
+//                
+//                for(int i=0; i<numSamples; i++)
+//                {
+//                    if(audio_codec_id == AUDIO_CODEC_G711_ALAW)
+//                    {
+//                        compressedData[i] = s16_to_alaw(sData[i]);
+//                    }
+//                    else if(audio_codec_id == AUDIO_CODEC_G711_ULAW)
+//                    {
+//                        compressedData[i] = s16_to_ulaw(sData[i]);
+//                    }
+//                }
+//                *((int*)(buf+sizeof(int64_t))) = numSamples;
+//                
+////                int sampleCnt = 0;
+////                for(double i=0; (int)i<numSamples; i += 44100.0/8000)
+////                {
+////                    if(audio_codec_id == AUDIO_CODEC_G711_ALAW)
+////                    {
+////                        compressedData[sampleCnt++] = s16_to_alaw(sData[(int)i]);
+////                    }
+////                    else if(audio_codec_id == AUDIO_CODEC_G711_ULAW)
+////                    {
+////                        compressedData[sampleCnt++] = s16_to_ulaw(sData[(int)i]);
+////                    }
+////                }
+////                *((int*)(buf+sizeof(int64_t))) = sampleCnt;
+//                //NSLog(@"numSamples = %d", sampleCnt);
+//                [audioDataBuffer putMediaSample:mediaSample];
+//            }
+//            [captureAudioBufAloc freeBuf:audioBuf];
+//        }
+//        else
+//        {
+//            usleep(1000);
+//        }
+//    }
+//}
+
+//- (void)videoEncodeThreadProc
+//{
+//    char *YUVBuf;
+//    while(b_capture)
+//    {
+//        if([captureVideoBuf getCurrentCount] > 0)
+//        {
+//            [captureVideoBuf getBuf:&YUVBuf];
+//            int frame_size;
+//            int64_t pts = *((int64_t*)YUVBuf);
+//            char *luma = YUVBuf + sizeof(int64_t);
+//            char *chroma = luma + width*height;
+//            unsigned char *nalData = H264Encoder->x264_encode(&frame_size, (unsigned char*)luma, (unsigned char*)chroma);
+//            [captureVideoBufAloc freeBuf:YUVBuf];
+//            
+//            IRDMediaSample *mediaSample;
+//            if(mediaDataMemAlloc->GetFreeRDMediaSample(&mediaSample) == RC_OK)
+//            {
+//                char *buf;
+//                mediaSample->GetBuffer(&buf);
+//                memcpy(buf, &pts, sizeof(int64_t));
+//                memcpy(buf+sizeof(int64_t), &frame_size, sizeof(int));
+//                memcpy(buf+sizeof(int64_t)+sizeof(int), nalData, frame_size);
+//                [videoDataBuffer putMediaSample:mediaSample];
+//            }
+//            else
+//            {
+//                NSLog(@"No free media sample");
+//            }
+//        }
+//        else
+//        {
+//            usleep(1000);
+//        }
+//    }
+//}
 
 - (int)iOSCam_initWithCodecParam : (codecParam*)param MemAlloc : (iOSRDMemAllocator*)aloc VideoDataBuffer : (MediaBuffer*)v_buf AudioDataBuffer : (MediaBuffer*)a_buf
 {
@@ -148,6 +279,13 @@
     chanel = param->chanel;
     audio_codec_id = param->audio_codec_id;
     
+//    captureVideoBufAloc = [[SampleBufferAlloctor alloc] initWithSize:width*height*3/2+10];
+//    captureVideoBuf = [[SampleBuffer alloc] init];
+//    videoEncodeThread = [[NSThread alloc] initWithTarget:self selector:@selector(videoEncodeThreadProc) object:nil];
+//    
+//    captureAudioBufAloc = [[SampleBufferAlloctor alloc] initWithSize:8000*2];
+//    captureAudioBuf = [[SampleBuffer alloc] init];
+//    audioEncodeThread = [[NSThread alloc] initWithTarget:self selector:@selector(audioEncodeThreadProc) object:nil];
     
     return RC_OK;
 }
@@ -158,8 +296,10 @@
     {
         [self setSession];
     }
-    [session startRunning];
     b_capture = YES;
+    [session startRunning];
+    //[videoEncodeThread start];
+    //[audioEncodeThread start];
     return RC_OK;
 }
 

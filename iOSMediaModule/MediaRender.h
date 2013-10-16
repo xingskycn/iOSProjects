@@ -14,9 +14,9 @@
 #import "MediaBuffer.h"
 #import <AudioToolbox/AudioToolbox.h>
 
-/**********************************************************
+/**
  * 媒体数据渲染类，显示视频画面，播放音频，实现音视频同步
- **********************************************************/
+ */
 @interface MediaRender : NSObject<GLKViewDelegate>
 {
     //video render param
@@ -43,6 +43,7 @@
     AudioQueueBufferRef buffers[3];
 
     BOOL b_active;
+    NSThread *audioStart;
 }
 
 /**

@@ -21,11 +21,11 @@
 		B60158511806777600081A76 /* H264Enc.mm in Sources */ = {isa = PBXBuildFile; fileRef = B60158501806777600081A76 /* H264Enc.mm */; };
 		B601585418067F1000081A76 /* iOSCam.mm in Sources */ = {isa = PBXBuildFile; fileRef = B601585318067F1000081A76 /* iOSCam.mm */; };
 		B601585A18068E0800081A76 /* MediaBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = B601585918068E0800081A76 /* MediaBuffer.mm */; };
-		B605148A18078FDA00B5D31F /* MediaRender.mm in Sources */ = {isa = PBXBuildFile; fileRef = B605148918078FDA00B5D31F /* MediaRender.mm */; };
 		B605148D1807909C00B5D31F /* H264Dec.mm in Sources */ = {isa = PBXBuildFile; fileRef = B605148C1807909C00B5D31F /* H264Dec.mm */; };
 		B60514941807C63300B5D31F /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B60514921807C63300B5D31F /* libavcodec.a */; };
 		B60514951807C63300B5D31F /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B60514931807C63300B5D31F /* libavutil.a */; };
 		B60514971807C63B00B5D31F /* libx264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B60514961807C63B00B5D31F /* libx264.a */; };
+		B60543A6180BFACD0029EEB9 /* MediaRender.mm in Sources */ = {isa = PBXBuildFile; fileRef = B605148918078FDA00B5D31F /* MediaRender.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,10 +150,14 @@
 		B601581E18064C6200081A76 /* iOSMediaModule */ = {
 			isa = PBXGroup;
 			children = (
-				B601585818068E0800081A76 /* MediaBuffer.h */,
-				B601585918068E0800081A76 /* MediaBuffer.mm */,
+				B6FBF2F41808DE9300F2F8C4 /* Common.h */,
+				B605148B1807909C00B5D31F /* H264Dec.h */,
+				B605148C1807909C00B5D31F /* H264Dec.mm */,
+				B601584F1806777600081A76 /* H264Enc.h */,
+				B60158501806777600081A76 /* H264Enc.mm */,
+				B601585218067F1000081A76 /* iOSCam.h */,
+				B601585318067F1000081A76 /* iOSCam.mm */,
 				B601584218064CA000081A76 /* iOSMediaModulePub.h */,
-				B601581F18064C6200081A76 /* Supporting Files */,
 				B601584318064CCD00081A76 /* iOSRDMediaControll.h */,
 				B601584418064CCD00081A76 /* iOSRDMediaControll.mm */,
 				B601584618064DBF00081A76 /* iOSRDMediaSample.h */,
@@ -162,15 +166,11 @@
 				B601584A18064E4400081A76 /* iOSRDMemAllocator.mm */,
 				B601584C18064EF100081A76 /* iOSRDReceiverCallBack.h */,
 				B601584D18064EF100081A76 /* iOSRDReceiverCallBack.mm */,
-				B601584F1806777600081A76 /* H264Enc.h */,
-				B60158501806777600081A76 /* H264Enc.mm */,
-				B601585218067F1000081A76 /* iOSCam.h */,
-				B601585318067F1000081A76 /* iOSCam.mm */,
+				B601585818068E0800081A76 /* MediaBuffer.h */,
+				B601585918068E0800081A76 /* MediaBuffer.mm */,
 				B605148818078FDA00B5D31F /* MediaRender.h */,
 				B605148918078FDA00B5D31F /* MediaRender.mm */,
-				B605148B1807909C00B5D31F /* H264Dec.h */,
-				B605148C1807909C00B5D31F /* H264Dec.mm */,
-				B6FBF2F41808DE9300F2F8C4 /* Common.h */,
+				B601581F18064C6200081A76 /* Supporting Files */,
 			);
 			path = iOSMediaModule;
 			sourceTree = "<group>";
@@ -282,8 +282,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B605148A18078FDA00B5D31F /* MediaRender.mm in Sources */,
 				B601585A18068E0800081A76 /* MediaBuffer.mm in Sources */,
+				B60543A6180BFACD0029EEB9 /* MediaRender.mm in Sources */,
 				B601584B18064E4400081A76 /* iOSRDMemAllocator.mm in Sources */,
 				B601585418067F1000081A76 /* iOSCam.mm in Sources */,
 				B605148D1807909C00B5D31F /* H264Dec.mm in Sources */,

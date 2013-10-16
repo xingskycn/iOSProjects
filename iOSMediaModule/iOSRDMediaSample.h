@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "iOSMediaModulePub.h"
 
-/******************************************************
+/**
  * 媒体数据内存类，继承媒体数据内存接口类IRDMediaSample
- ******************************************************/
+ */
 class iOSRDMediaSample : public IRDMediaSample
 {
 private:
